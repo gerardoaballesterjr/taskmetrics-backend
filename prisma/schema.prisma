@@ -1,0 +1,120 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  Admin
+  Professor
+  Student
+}
+
+enum Phase {
+  Prelim
+  MidTerm
+  PreFinal
+  Final
+}
+
+model Account {
+  id String @id @default(uuid())
+  fullname String
+  email String @unique
+  password String
+  active Boolean @default(false)
+  role Role
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  subjects Subject[]
+  students Student[]
+}
+
+model Semester {
+  id String @id @default(uuid())
+  name String @unique
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  subjects Subject[]
+  types Type[]
+}
+
+model Type {
+  id String @id @default(uuid())
+  name String
+  percentage Int
+  semester_id String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  tasks Task[]
+
+  semester Semester @relation(fields: [semester_id], references: [id])
+}
+
+model Subject {
+  id String @id @default(uuid())
+  name String
+  code String
+  description String
+  account_id String
+  semester_id String
+  active Boolean @default(true)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  tasks Task[]
+  students Student[]
+
+  account Account @relation(fields: [account_id], references: [id])
+  semester Semester @relation(fields: [semester_id], references: [id])
+}
+
+model Task {
+  id String @id @default(uuid())
+  name String
+  description String
+  passing Int
+  total Int
+  phase Phase
+  subject_id String
+  type_id String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  activities Activity[]
+
+  subject Subject @relation(fields: [subject_id], references: [id])
+  type Type @relation(fields: [type_id], references: [id])
+}
+
+model Student {
+  id String @id @default(uuid())
+  account_id String
+  subject_id String
+  active Boolean @default(false)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  activities Activity[]
+
+  account Account @relation(fields: [account_id], references: [id])
+  subject Subject @relation(fields: [subject_id], references: [id])
+}
+
+model Activity {
+  id String @id @default(uuid())
+  score Int
+  student_id String
+  task_id String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  student Student @relation(fields: [student_id], references: [id])
+  task Task @relation(fields: [task_id], references: [id])
+}
