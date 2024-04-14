@@ -26,7 +26,9 @@ export class PrismaClientExceptionFilter extends BaseExceptionFilter {
         break;
       }
       case 'P2003': {
-        error(`${exception.meta.modelName} does not exists.`);
+        error(
+          `${exception.meta.field_name.toString().split('_')[1]} does not exists.`,
+        );
         break;
       }
       default:

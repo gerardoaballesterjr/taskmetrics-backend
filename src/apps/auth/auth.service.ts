@@ -1,24 +1,21 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { DatabaseService } from 'src/utils/database/database.service';
-import { CreateAccountDto } from './dto/register.dto';
 import { Account } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
 import * as jsonwebtoken from 'jsonwebtoken';
-import { LoginDto } from './dto/login.dto';
-import { RefreshDto } from './dto/refresh.dto';
 
 @Injectable()
 export class AuthService {
   constructor(private readonly DatabaseService: DatabaseService) {}
 
-  async register(data: CreateAccountDto) {
+  async register(data: any) {
     data.password = await bcrypt.hash(data.password, 12);
     let result = await this.DatabaseService.account.create({ data: data });
     delete result.password;
     return result;
   }
 
-  async login(data: LoginDto) {
+  async login(data: any) {
     const account = await this.DatabaseService.account.findUnique({
       where: { email: data.email },
     });
@@ -31,7 +28,7 @@ export class AuthService {
     return this.createtoken(account);
   }
 
-  async refresh(data: RefreshDto) {
+  async refresh(data: any) {
     return await jsonwebtoken.verify(
       data.token,
       process.env.SECRET_KEY,

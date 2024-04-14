@@ -1,7 +1,6 @@
-import { Prisma } from '@prisma/client';
 import { IsNotEmpty, IsString } from 'class-validator';
 
-export class CreateSemesterDto implements Prisma.SemesterCreateInput {
+export class CreateSemesterDto {
   @IsString()
   @IsNotEmpty()
   name: string;

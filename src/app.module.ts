@@ -6,6 +6,7 @@ import { DatabaseModule } from './utils/database/database.module';
 import { AuthModule } from './apps/auth/auth.module';
 import { SemesterModule } from './apps/semester/semester.module';
 import { AccountModule } from './apps/account/account.module';
+import { TypeModule } from './apps/type/type.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { AccountModule } from './apps/account/account.module';
     AuthModule,
     SemesterModule,
     AccountModule,
+    TypeModule,
   ],
   controllers: [AppController],
   providers: [AppService],

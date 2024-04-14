@@ -1,7 +1,7 @@
-import { $Enums, Prisma, Role } from '@prisma/client';
+import { $Enums, Role } from '@prisma/client';
 import { IsEmail, IsEnum, IsNotEmpty, IsString } from 'class-validator';
 
-export class CreateAccountDto implements Prisma.AccountCreateInput {
+export class CreateAccountDto {
   @IsEmail()
   @IsNotEmpty()
   email: string;

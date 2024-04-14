@@ -15,8 +15,8 @@ enum Role {
 
 enum Phase {
   Prelim
-  MidTerm
-  PreFinal
+  Midterm
+  Semifinal
   Final
 }
 
@@ -48,13 +48,13 @@ model Type {
   id String @id @default(uuid())
   name String
   percentage Int
-  semester_id String
+  semester String
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
   tasks Task[]
 
-  semester Semester @relation(fields: [semester_id], references: [id])
+  Semester Semester @relation(fields: [semester], references: [id])
 }
 
 model Subject {
@@ -62,8 +62,8 @@ model Subject {
   name String
   code String
   description String
-  account_id String
-  semester_id String
+  account String
+  semester String
   active Boolean @default(true)
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
@@ -71,8 +71,8 @@ model Subject {
   tasks Task[]
   students Student[]
 
-  account Account @relation(fields: [account_id], references: [id])
-  semester Semester @relation(fields: [semester_id], references: [id])
+  Account Account @relation(fields: [account], references: [id])
+  Semester Semester @relation(fields: [semester], references: [id])
 }
 
 model Task {
@@ -82,39 +82,39 @@ model Task {
   passing Int
   total Int
   phase Phase
-  subject_id String
-  type_id String
+  subject String
+  type String
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
   activities Activity[]
 
-  subject Subject @relation(fields: [subject_id], references: [id])
-  type Type @relation(fields: [type_id], references: [id])
+  Subject Subject @relation(fields: [subject], references: [id])
+  Type Type @relation(fields: [type], references: [id])
 }
 
 model Student {
   id String @id @default(uuid())
-  account_id String
-  subject_id String
+  account String
+  subject String
   active Boolean @default(false)
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
   activities Activity[]
 
-  account Account @relation(fields: [account_id], references: [id])
-  subject Subject @relation(fields: [subject_id], references: [id])
+  Account Account @relation(fields: [account], references: [id])
+  Subject Subject @relation(fields: [subject], references: [id])
 }
 
 model Activity {
   id String @id @default(uuid())
   score Int
-  student_id String
-  task_id String
+  student String
+  task String
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
-  student Student @relation(fields: [student_id], references: [id])
-  task Task @relation(fields: [task_id], references: [id])
+  Student Student @relation(fields: [student], references: [id])
+  Task Task @relation(fields: [task], references: [id])
 }

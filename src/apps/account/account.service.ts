@@ -1,6 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { DatabaseService } from 'src/utils/database/database.service';
-import { UpdateAccountStatusDto } from './dto/update-account-status.dto';
 
 @Injectable()
 export class AccountService {
@@ -20,7 +19,7 @@ export class AccountService {
     return result.map(({ password, ...rest }) => rest);
   }
 
-  async updatestatus(id: string, data: UpdateAccountStatusDto) {
+  async updatestatus(id: string, data: any) {
     const result = await this.DatabaseService.account.findUnique({
       where: { id: id },
     });
