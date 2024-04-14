@@ -7,6 +7,7 @@ import { AuthModule } from './apps/auth/auth.module';
 import { SemesterModule } from './apps/semester/semester.module';
 import { AccountModule } from './apps/account/account.module';
 import { TypeModule } from './apps/type/type.module';
+import { SubjectModule } from './apps/subject/subject.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { TypeModule } from './apps/type/type.module';
     SemesterModule,
     AccountModule,
     TypeModule,
+    SubjectModule,
   ],
   controllers: [AppController],
   providers: [AppService],
