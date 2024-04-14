@@ -4,7 +4,7 @@ import {
   Delete,
   Get,
   Param,
-  Patch,
+  Put,
   Post,
   Query,
   UseGuards,
@@ -39,8 +39,9 @@ export class SemesterController {
     return this.SemesterService.detail(id);
   }
 
-  // admin
-  @Patch(':id')
+  @Put(':id')
+  @Roles(['Admin'])
+  @UseGuards(RolesGuard)
   update(
     @Param('id') id: string,
     @Body(ValidationPipe) data: UpdateSemesterDto,
@@ -48,8 +49,9 @@ export class SemesterController {
     return this.SemesterService.update(id, data);
   }
 
-  // admin
   @Delete(':id')
+  @Roles(['Admin'])
+  @UseGuards(RolesGuard)
   delete(@Param('id') id: string) {
     return this.SemesterService.delete(id);
   }
