@@ -5,10 +5,16 @@ import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './utils/database/database.module';
 import { AuthModule } from './apps/auth/auth.module';
 import { SemesterModule } from './apps/semester/semester.module';
-import { AccountModule } from './account/account.module';
+import { AccountModule } from './apps/account/account.module';
 
 @Module({
-  imports: [ConfigModule.forRoot(), DatabaseModule, AuthModule, SemesterModule, AccountModule],
+  imports: [
+    ConfigModule.forRoot(),
+    DatabaseModule,
+    AuthModule,
+    SemesterModule,
+    AccountModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

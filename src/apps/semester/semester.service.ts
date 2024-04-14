@@ -11,9 +11,12 @@ export class SemesterService {
     if (name) {
       return await this.DatabaseService.semester.findMany({
         where: { name: { contains: name } },
+        orderBy: [{ created_at: 'asc' }],
       });
     }
-    return await this.DatabaseService.semester.findMany();
+    return await this.DatabaseService.semester.findMany({
+      orderBy: [{ created_at: 'asc' }],
+    });
   }
 
   async create(data: CreateSemesterDto) {
