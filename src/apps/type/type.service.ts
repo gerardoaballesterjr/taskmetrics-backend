@@ -34,6 +34,7 @@ export class TypeService {
       where: { id: id },
     });
     if (!result) throw new NotFoundException();
+    delete data.semester;
     return await this.DatabaseService.type.update({
       where: { id: id },
       data: data,

@@ -8,6 +8,7 @@ import { SemesterModule } from './apps/semester/semester.module';
 import { AccountModule } from './apps/account/account.module';
 import { TypeModule } from './apps/type/type.module';
 import { SubjectModule } from './apps/subject/subject.module';
+import { TaskModule } from './apps/task/task.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { SubjectModule } from './apps/subject/subject.module';
     AccountModule,
     TypeModule,
     SubjectModule,
+    TaskModule,
   ],
   controllers: [AppController],
   providers: [AppService],

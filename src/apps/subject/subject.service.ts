@@ -51,6 +51,7 @@ export class SubjectService {
       },
     });
     if (!result) throw new NotFoundException();
+    delete data.semester;
     return await this.DatabaseService.subject.update({
       where: { id: id },
       data: data,

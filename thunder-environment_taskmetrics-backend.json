@@ -1,0 +1,21 @@
+{
+    "client": "Thunder Client",
+    "environmentName": "taskmetrics-backend",
+    "dateExported": "2024-04-15T10:56:45.913Z",
+    "version": "1.0",
+    "variables": [
+        {
+            "name": "TASKMETRICS_BACKEND_BASE_URL",
+            "value": "http://127.0.0.1:8000",
+            "secret": true
+        },
+        {
+            "name": "TASKMETRICS_BACKEND_ACCESS_TOKEN",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoiYWNjZXNzIiwiYWNjb3VudCI6eyJpZCI6IjA0OGE2YmJhLWI2YTAtNGIyMy1iODRjLWM0ZjYxYjlhNWYyNyIsImZ1bGxuYW1lIjoiRnJpdHogSW1wZXJpYWwiLCJlbWFpbCI6ImZpbXBlcmlhbEBnYm94Lm5jZi5lZHUucGgiLCJhY3RpdmUiOnRydWUsInJvbGUiOiJQcm9mZXNzb3IiLCJjcmVhdGVkX2F0IjoiMjAyNC0wNC0xNFQxNTowODo1NS4xMDJaIiwidXBkYXRlZF9hdCI6IjIwMjQtMDQtMTRUMTU6MDk6MjcuMjE4WiJ9LCJpYXQiOjE3MTMxNjQyMjYsImV4cCI6MTcxNTc1NjIyNn0.qiEb_Gp0vPq3ZwN122pJG1u32cQdVKt4SMazUrw9RfY"
+        },
+        {
+            "name": "TASKMETRICS_BACKEND_REFRESH_TOKEN",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoicmVmcmVzaCIsImFjY291bnQiOnsiaWQiOiIwNDhhNmJiYS1iNmEwLTRiMjMtYjg0Yy1jNGY2MWI5YTVmMjciLCJmdWxsbmFtZSI6IkZyaXR6IEltcGVyaWFsIiwiZW1haWwiOiJmaW1wZXJpYWxAZ2JveC5uY2YuZWR1LnBoIiwiYWN0aXZlIjp0cnVlLCJyb2xlIjoiUHJvZmVzc29yIiwiY3JlYXRlZF9hdCI6IjIwMjQtMDQtMTRUMTU6MDg6NTUuMTAyWiIsInVwZGF0ZWRfYXQiOiIyMDI0LTA0LTE0VDE1OjA5OjI3LjIxOFoifSwiaWF0IjoxNzEzMTY0MjI2LCJleHAiOjE3MTU3NTYyMjZ9.XqydCKtrIDFXEjFK2cERdopX7beWYAK5gJmQVYtrm0g"
+        }
+    ]
+}
